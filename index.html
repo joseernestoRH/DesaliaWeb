@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="starter" ng-app>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<link rel=stylesheet href="Style.css" type="text/css" />
+<title>Barcelo Desalia</title>
+
+<script src="cordova.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$( document ).ready(function() {
+
+
+  $('#registar').click(function(){
+    var data ={ "name": $('#name').val(), "email": $('#email').val(),
+                          "idcard": $('#idcard').val(), "phone": $('#phone').val(),
+                          "instagram": $('#instagram').val(), "eurovisa": 1
+     };
+
+      console.log(data);
+
+
+        //  $.ajax({
+        //          type: "POST",
+        //          url: "http://159.203.88.171:8085/user/add",
+        //          data: JSON.stringify(data),// now data come in this function
+        //          contentType: "application/json; charset=utf-8",
+        //          dataType: "json",
+        //          success: function (data, status, jqXHR) {
+        //             console.log(data);
+        //
+        //          },
+        //
+        //          error: function (jqXHR, status) {
+        //              // error handler
+        //              console.log(jqXHR);
+        //
+        //          }
+        //       });
+        // })
+
+        $.post("http://159.203.88.171:8085/user/add", { "name": $('#name').val(), "email": $('#email').val(),
+                              "idcard": $('#idcard').val(), "phone": $('#phone').val(),
+                              "instagram": $('#instagram').val(), "eurovisa": 1
+         }, function(data){
+            alert(data);
+        })
+
+        window.location.href = "index_2.html";
+      })
+
+
+  });
+
+
+
+</script>
+</head>
+
+<body class="fondo_1">
+
+<form class="contact_form user" action="#" method="post" ng-controlle="DesaliaController">
+
+    <ul>
+
+       <li style="float: left;">
+           <input style="width: 460px; text-indent: 0;" type="text" id="name"  placeholder="Nombre Completo" />
+
+       </li>
+
+       <li style="float: right;">
+           <input style=" width: 300px; text-indent: 0;" type="text" id="idcard" placeholder="Cédula de Identidad" />
+
+       </li>
+
+       <li style="float: left;">
+           <input class="phone" style="width: 300px;" type="text" id="phone" placeholder="Teléfono" />
+
+       </li>
+       <li style="float: right;">
+           <input class="mail" style="width: 460px;" type="email" id="email" name="email" placeholder="Correo" />
+
+       </li>
+       <li style="float: left;">
+           <input class="instagram" style="width: 350px;" type="text" id="instagram" placeholder="Instagram" />
+
+       </li>
+       <div id="ck">
+
+           <label>
+             <span>¿Tienes Visa Europea?</span>
+             <input style="text-indent: 0; width: 450px;" id="eurovisa" type="checkbox">
+           </label>
+
+       </div>
+
+        <li>
+
+          <div id="boton">
+
+            <a id="registar"> <img border="0" src="Images/boton_registrar.jpg" width="80%" height="80%"> </a>
+
+
+          </div>
+
+      </li>
+
+    </ul>
+
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- <script src="js/angular-route.min.js"></script>
+<script src="app/app.js"></script> -->
+</body>
+</html>
